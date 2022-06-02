@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@500;600&family=Roboto+Condensed&display=swap');
+.sale-container {
+  display: block;
+  width: 100%;
+  background: #e1e1e1;
+}
+
+.sale-section-top {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'Inconsolata', monospace;
+  padding: 10px;
+  padding-top: 20px;
+  align-items: center;
+}
+
+.sale-section-top h1 {
+  font-weight: light;
+  margin-right: 20px;
+}
+
+.new-sale {
+  align-items: center;
+  border: none;
+  display: flex;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+
+.new-sale img {
+  width: 27px;
+  margin-right: 5px;
+}
+
+.new-sale p {
+  font-weight: bolder;
+  font-size: 15px;
+}
+
+.new-sale:hover p,
+.new-sale:hover img {
+  opacity: 0.4;
+}
+
+.show-finance {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 3px 15px;
+}
+
+.show-finance li {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  margin-bottom: 10px;
+  justify-content: center;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  padding: 5px 0;
+  border-radius: 5px;
+}
+
+.show-finance li .show-finance-info {
+  margin-right: 5px;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.show-finance li .show-finance-info h3 {
+  font-size: 16px;
+  font-weight: lighter;
+  margin-right: 15px;
+}
+
+.show-finance li .show-finance-info p {
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.show-finance li .show-finance-img {
+  width: 47px;
+  height: 47px;
+  background-color: #33353a;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
+.show-finance li .show-finance-img img {
+  width: 100%;
+  display: block;
+  margin: auto;
+}
+
+.historic-sales {
+  padding: 0 20px;
+  background-color: #fff;
+  width: 95%;
+  margin: 15px auto 0;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+
+.table-hs-row {
+  display: flex;
+}
+
+.table-hs-body {
+  font-weight: bold;
+}
+
+.table-hs-col {
+  flex: 1;
+  border-bottom: 1px solid black;
+  padding: 15px 3px;
+  display: flex;
+  align-items: center;
+}
+
+.table-hs-col:last-child {
+  border-right: none;
+}
+
+.table-hs-client {
+  padding-left: 10px;
+}
+
+.table-hs-body .table-hs-Date {
+  font-size: 14px;
+  font-weight: 400;
+}

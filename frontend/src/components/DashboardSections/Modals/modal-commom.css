@@ -1,0 +1,68 @@
+.modal-commom {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+}
+
+.modal-commom-form {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  box-shadow: 0 0 2px black;
+  position: relative;
+}
+
+.modal-commom-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.modal-commom-title {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.modal-commom-group {
+  margin: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 20px 0;
+  width: 100%;
+}
+
+.modal-commom-group article {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  align-items: center;
+}
+
+.modal-commom-group article .modal-commom-group-commom {
+  width: 50%;
+}
+
+.modal-commom-group article input {
+  height: 35px;
+  padding: 0 5px;
+}
+
+.modal-commom-contact {
+  width: 100%;
+}

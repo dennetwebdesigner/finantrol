@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@500;600&family=Roboto+Condensed&display=swap');
+.menu-dashboard {
+  width: 100%;
+  height: 100vh;
+  background-color: #e1e1e1;
+  font-family: 'Inconsolata', monospace;
+  color: #3d5071;
+  padding-top: 15px;
+  padding-left: 14px;
+  position: absolute;
+  top: 0;
+  left: -100%;
+}
+
+.menu-dashboard a {
+  color: #3d5071;
+}
+
+.dashboard-menu-tittle {
+  font-size: 22px;
+}
+
+.dashboard-menu-close {
+  position: absolute;
+  right: calc(-100%);
+  top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 63px;
+  height: 63px;
+  transition: 0.5s;
+}
+
+.dashboard-menu-close img {
+  width: 100%;
+}
+
+.dashboard-menu-subtittle {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.dashboard-list-menu {
+  width: 100%;
+  margin-top: 40px;
+  list-style: none;
+}
+
+.dashboard-menu-item {
+  font-size: 20px;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.icon-container-menu-item {
+  width: 57px;
+  height: 57px;
+  padding: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.dashboard-menu-item img {
+  display: block;
+  width: 100%;
+  margin: auto;
+  opacity: 0.6;
+}
+
+@media (min-width: 1360px) {
+  .menu-dashboard {
+    left: 0;
+    width: 200px;
+  }
+  .dashboard-menu-close {
+    display: none;
+  }
+}
