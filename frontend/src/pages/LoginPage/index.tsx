@@ -26,7 +26,6 @@ export const LoginPage = (): JSX.Element => {
       <section className="login-form-control">
         <h1 className="login-tittle">Finantrol</h1>
         <h2 className="login-subttitle">Seja Bem-Vindo ao seu controle financeiro!</h2>
-
         <form className="login-group-form-control">
           <article className="login-group-form">
             <label htmlFor="username">Nome de Usuário</label>
@@ -79,7 +78,6 @@ export const LoginPage = (): JSX.Element => {
             <p>cadastrar</p>
           </Link>
         </form>
-
         <div className="google-button">
           <img className="google-icon" src={buttonGoogle} alt="" />
           <p>Fazer login com Google</p>

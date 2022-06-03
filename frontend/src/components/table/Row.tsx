@@ -1,24 +1,44 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export const RowTh = ({ Width, Background, Style, Margin, Padding, Content }) => {
+interface iRowTh {
+  Width: string | any;
+  Background: string | any;
+  Margin: string | any;
+  Padding: string | any;
+  Content: string | any;
+}
+
+interface iDataRow {
+  className: string | any;
+  content: string | any;
+}
+
+export const RowTh = ({
+  Width,
+  Background,
+  Margin,
+  Padding,
+  Content,
+}: iRowTh): JSX.Element => {
   const [width, setWidth] = useState('');
   const [background, setBackground] = useState('');
   const [margin, setMargin] = useState('');
   const [padding, setPadding] = useState('');
 
-  const [style, setStyle] = useState({
-    display: 'flex',
-    width: Width,
-    background: Background,
-    margin: Margin,
-    padding: Padding,
-  });
+  const [style, setStyle] = useState({});
 
   useEffect(() => {
     setWidth(Width);
     setBackground(Background);
     setMargin(Margin);
     setPadding(Padding);
+    setStyle({
+      display: 'flex',
+      width: width,
+      background: background,
+      margin: margin,
+      padding: padding,
+    });
   }, [style]);
 
   return (
@@ -29,7 +49,7 @@ export const RowTh = ({ Width, Background, Style, Margin, Padding, Content }) =>
         justifyContent: 'spac-between ',
       }}
     >
-      {Content.map((item, index) => (
+      {Content.map((item: iDataRow, index: number) => (
         <div key={index} style={style} className={item.className}>
           {item.content}
         </div>

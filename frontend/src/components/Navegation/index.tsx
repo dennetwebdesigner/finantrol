@@ -5,7 +5,7 @@ import { PageNotFound } from '../../pages/Errors/PageNotFound';
 import { Home as HomePage } from '../../pages/Home';
 import { LoginPage } from '../../pages/LoginPage';
 import { SignUpPage } from '../../pages/SignUpPage';
-import { Ecommerce } from '../DashboardSections/Ecommerce';
+import { Marketplace } from '../DashboardSections/MarketplaceDashBoard/Marketplace';
 import { Products } from '../DashboardSections/Products';
 import { Sales } from '../DashboardSections/Sales';
 
@@ -17,7 +17,7 @@ export const Navegation = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<HomePage />}>
           <Route path="" element={<Sales />}></Route>
-          <Route path="/marketplace" element={<Ecommerce />}></Route>
+          <Route path="/marketplace" element={<Marketplace />}></Route>
           <Route path="/products" element={<Products />}></Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />

@@ -1,6 +1,10 @@
-export const modal_close_animation = (e, parentModalEl) => {
+import { MouseEvent, MutableRefObject } from 'react';
+
+export const modal_close_animation = (
+  e: MouseEvent,
+  parentModalEl: MutableRefObject<any>,
+): void => {
   const modal = parentModalEl.current;
-  console.log(modal);
   modal.style.transition = '.5s';
   modal.style.opacity = 0;
   setTimeout(() => {
@@ -8,15 +12,16 @@ export const modal_close_animation = (e, parentModalEl) => {
   }, 500);
 };
 
-export const modal_open_animation = (e, modalEl, className) => {
-  const new_mk = e.target;
-  if (new_mk.classList.contains(className)) {
-    modalEl.current.style.transition = '.5s';
+// function responsible for apen modal
+export const modal_open_animation = (modalEl: MutableRefObject<any>): void => {
+  // modal element ref set transition style
+  modalEl.current.style.transition = '.5s';
 
-    modalEl.current.style.display = 'flex';
+  // modal element ref set display flex
+  modalEl.current.style.display = 'flex';
 
-    setTimeout(() => {
-      modalEl.current.style.opacity = 1;
-    }, 500);
-  }
+  // delays animation fade in
+  setTimeout(() => {
+    modalEl.current.style.opacity = 1;
+  }, 500);
 };
