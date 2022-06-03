@@ -1,29 +1,30 @@
 import './Sales.css';
 
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 
 import { money, plus } from '../../../assets/img/icons';
 import { modal_open_animation } from '../Modals/modal-animation';
 import { ModalSale } from '../Modals/ModalSales/ModalSale';
 
 export const Sales = () => {
+  // modal ref for create new sales - incomplet
   const modalSaleEl = useRef(null);
   return (
-    <div
-      className="sale-container"
-      onClick={(e) => {
-        modal_open_animation(e, modalSaleEl, 'create-new-sale');
-      }}
-    >
+    <div className="sale-container">
       {/* TOPO */}
       <header className="sale-section-top">
         {/* TITULO */}
         <h1>Resumo</h1>
 
         {/* CRIAR NOVA VENDA */}
-        <button className="new-sale create-new-sale">
-          <img className="create-new-sale" src={plus} alt="" />
-          <p className="create-new-sale">Nova venda</p>
+        <button
+          className="new-sale "
+          onClick={() => {
+            modal_open_animation(modalSaleEl);
+          }}
+        >
+          <img src={plus} alt="img icon cross, imagem icone de cruz" />
+          <p>Nova venda</p>
         </button>
       </header>
       {/* FIM TOPO */}

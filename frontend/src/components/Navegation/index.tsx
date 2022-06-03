@@ -7,7 +7,7 @@ import { LoginPage } from '../../pages/LoginPage';
 import { SignUpPage } from '../../pages/SignUpPage';
 import { Marketplace } from '../DashboardSections/MarketplaceDashBoard/Marketplace';
 import { Products } from '../DashboardSections/ProductsDashBoard/Products';
-import { Sales } from '../DashboardSections/Sales';
+import { Sales } from '../DashboardSections/SalesDashBoard/Sales';
 
 export const Navegation = () => {
   return (
