@@ -6,7 +6,7 @@ import { Home as HomePage } from '../../pages/Home';
 import { LoginPage } from '../../pages/LoginPage';
 import { SignUpPage } from '../../pages/SignUpPage';
 import { Marketplace } from '../DashboardSections/MarketplaceDashBoard/Marketplace';
-import { Products } from '../DashboardSections/Products';
+import { Products } from '../DashboardSections/ProductsDashBoard/Products';
 import { Sales } from '../DashboardSections/Sales';
 
 export const Navegation = () => {
