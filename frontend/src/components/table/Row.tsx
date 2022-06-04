@@ -39,7 +39,7 @@ export const RowTh = ({
       margin: margin,
       padding: padding,
     });
-  }, [style]);
+  }, [width, background, margin, padding]);
 
   return (
     <div

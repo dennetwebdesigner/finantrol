@@ -1,7 +1,9 @@
 import './MenuDashboard.css';
 
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
+// import icons images
 import {
   employees,
   marketplace,
@@ -10,68 +12,122 @@ import {
   profile,
   sale,
 } from '../../assets/img/icons';
-import { menu_closed, menuAnimation } from './menuAnimation';
+// import animatyions menu
+import { menuAnimation } from './menuAnimation';
 
-export const MenuDashboard = () => {
+export const MenuDashboard = (): JSX.Element => {
+  // ref of element menu jsx
+  const menuDashBoardEl = useRef(null);
+  // ref of element button close or open menu jsx
+  const closeButtonMenuDashBoardEl = useRef(null);
+  // ref of element image icon menu jsx
+  const imageMenu = useRef(null);
+
+  const handleMenuButtonClick = () => {
+    menuAnimation(
+      menuDashBoardEl.current,
+      closeButtonMenuDashBoardEl.current,
+      imageMenu.current,
+    );
+  };
+
   return (
-    <>
-      <div className="menu-dashboard" id="menu-dashboard">
-        {/* TITULO */}
-        <h1 className="dashboard-menu-tittle">Finantrol</h1>
-        {/* SUBTITULO */}
-        <h2 className="dashboard-menu-subtittle">Controle Financeiro</h2>
-        {/*  MENU */}
-        <div className="dashboard-menu-close" onClick={menuAnimation}>
-          <img src={menu} alt="" />
-        </div>
+    <div className="menu-dashboard" ref={menuDashBoardEl}>
+      {/* TITULO */}
+      <h1 className="dashboard-menu-tittle">Finantrol</h1>
+      {/* SUBTITULO */}
+      <h2 className="dashboard-menu-subtittle">Controle Financeiro</h2>
+      {/*  MENU */}
+      <button
+        className="dashboard-menu-close"
+        ref={closeButtonMenuDashBoardEl}
+        onClick={handleMenuButtonClick}
+        onKeyDown={handleMenuButtonClick}
+      >
+        <img src={menu} alt="" ref={imageMenu} />
+      </button>
 
-        {/* LISTA DE LINKS */}
-        <ul className="dashboard-list-menu">
-          {/* ITEM MENU */}
-          <li className="dashboard-menu-item" onClick={menu_closed}>
+      {/* LISTA DE LINKS */}
+      <ul className="dashboard-list-menu">
+        {/* ITEM MENU */}
+        <li className="dashboard-menu-item">
+          <div
+            onClick={handleMenuButtonClick}
+            onKeyDown={handleMenuButtonClick}
+            role="button"
+            tabIndex={0}
+          >
             <div className="icon-container-menu-item">
               <img src={sale} alt="" />
             </div>
 
             <Link to="/">Início</Link>
-          </li>
+          </div>
+        </li>
 
-          {/* ITEM MENU */}
-          <li className="dashboard-menu-item" onClick={menu_closed}>
+        {/* ITEM MENU */}
+        <li className="dashboard-menu-item">
+          <div
+            onClick={handleMenuButtonClick}
+            onKeyDown={handleMenuButtonClick}
+            role="button"
+            tabIndex={0}
+          >
             <div className="icon-container-menu-item">
               <img src={marketplace} alt="" />
             </div>
             <Link to="/marketplace">Loja/Serviço</Link>
-          </li>
+          </div>
+        </li>
 
-          {/* ITEM MENU */}
-          <li className="dashboard-menu-item" onClick={menu_closed}>
+        {/* ITEM MENU */}
+        <li className="dashboard-menu-item">
+          <div
+            onClick={handleMenuButtonClick}
+            onKeyDown={handleMenuButtonClick}
+            role="button"
+            tabIndex={0}
+          >
             <div className="icon-container-menu-item">
               <Link to="/products">
-                {' '}
                 <img src={product} alt="" />
               </Link>
             </div>
             <Link to="/products">Produtos</Link>
-          </li>
+          </div>
+        </li>
 
-          {/* ITEM MENU */}
-          <li className="dashboard-menu-item">
+        {/* ITEM MENU */}
+        <li className="dashboard-menu-item">
+          <div
+            onClick={handleMenuButtonClick}
+            onKeyDown={handleMenuButtonClick}
+            role="button"
+            tabIndex={0}
+          >
             <div className="icon-container-menu-item">
               <img src={employees} alt="" />
             </div>
             Funcionarios
-          </li>
+          </div>
+        </li>
 
-          {/* ITEM MENU */}
-          <li className="dashboard-menu-item">
+        {/* ITEM MENU */}
+        <li className="dashboard-menu-item">
+          {' '}
+          <div
+            onClick={handleMenuButtonClick}
+            onKeyDown={handleMenuButtonClick}
+            role="button"
+            tabIndex={0}
+          >
             <div className="icon-container-menu-item">
               <img src={profile} alt="" />
             </div>
             Perfil
-          </li>
-        </ul>
-      </div>
-    </>
+          </div>
+        </li>
+      </ul>
+    </div>
   );
 };
