@@ -55,8 +55,7 @@ export const menuAnimation = (
     : { transition: '0.5s', left: '-100%' };
   const closPosRight = !isActive ? '0' : '-100%';
   const active = !isActive ? true : false;
-
-  if (window.screen.width < 1360) {
+  if (document.body.clientWidth < 1360) {
     // active animation menu
     changeCSSAnimMenu(menu, close, imgOptions, menuOptions, closPosRight, active);
   }
