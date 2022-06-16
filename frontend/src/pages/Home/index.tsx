@@ -1,10 +1,11 @@
 import './Home.css';
 
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { MenuDashboard } from '../../components/MenuDashBoard';
+import MarketplaceController from '../../controllers/MarketplaceController';
 import { authValidate } from '../../helpers/authHelpers';
 import { validateKeys } from '../../helpers/KeysHelpers';
 import { destroyAuth } from '../../store/actions/authActions';
@@ -13,40 +14,52 @@ import { PermissionDenied } from '../Errors/PermissionDenied';
 export const Home = () => {
   const [Protected, setProtected] = useState(PermissionDenied);
 
-  const authState = useSelector((state) => state.auth.auth);
+  const authState = useSelector((state: any) => state.auth.auth);
   const navigate = useNavigate();
   const removeAuth = useDispatch();
+  const dispatch = useDispatch();
+
+  const allMarketplaces = useCallback(async () => {
+    const list = await MarketplaceController.list();
+    dispatch({
+      type: 'ADD_ALL_MARKETPLACE',
+      payload: list,
+    });
+  }, []);
 
   const validateAuth = useCallback(authValidate, []);
 
   useEffect(() => {
     const permission = validateAuth();
-    permission.then((data) => console.log(data));
+
+    allMarketplaces();
+
     permission
       .then((data) => {
         console.log('allow: ' + data.status);
         if (!validateKeys() || authState.token.length < 1) {
           setTimeout(() => {
-            removeAuth(destroyAuth({}));
+            removeAuth(destroyAuth());
             navigate('/login');
-          }, 4000);
+          }, 2000);
           return;
         }
         setProtected(() => (
           <div className="dashboard-container">
             <MenuDashboard />
-            <Outlet className="container-sections" />
+            <div className="container-sections">
+              <Outlet />
+            </div>
           </div>
         ));
       })
-      .catch((data) => {
-        console.log('denied: ' + data.status);
-        removeAuth(destroyAuth({}));
+      .catch(() => {
+        removeAuth(destroyAuth());
         setTimeout(() => {
           navigate('/login');
         }, 4000);
       });
-  }, [validateAuth]);
+  }, [validateAuth, authState, allMarketplaces]);
 
   return Protected;
 };

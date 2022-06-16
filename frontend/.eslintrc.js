@@ -32,6 +32,7 @@ module.exports = {
   ],
   plugins: ['simple-import-sort', 'prettier'],
   rules: {
+    'react/display-name': 'off',
     'no-undef': 'off',
     'prettier/prettier': ['error', { endOfLine: 'auto' }, { usePrettierrc: true }],
     'react/react-in-jsx-scope': 'off',

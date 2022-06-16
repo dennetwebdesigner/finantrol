@@ -30,9 +30,7 @@ class CreateUserService {
     const usernameExist = await this.repository.findByUsername(username);
 
     if (emailExist)
-      throw new Error(
-        JSON.stringify({ message: "Email já esta cadastrado!", status: 403 })
-      );
+      throw new Error(JSON.stringify({ message: emailExist, status: 403 }));
     else if (usernameExist)
       throw new Error(
         JSON.stringify({

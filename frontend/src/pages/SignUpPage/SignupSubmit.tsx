@@ -48,7 +48,6 @@ export const SignupSubmit = async ({
     const err = error as AxiosError;
     if (err.response) {
       const { status, data } = err.response;
-      console.log(data, status);
       alert(data);
     }
   }

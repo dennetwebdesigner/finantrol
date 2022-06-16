@@ -11,7 +11,7 @@ class ContactMarketplace extends Model {
       {
         marketplace_id: DataTypes.INTEGER,
         data: DataTypes.STRING,
-        types: DataTypes.ENUM(
+        type: DataTypes.ENUM(
           "instagram",
           "facebook",
           "whatsapp",

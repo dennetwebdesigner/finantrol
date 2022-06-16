@@ -1,6 +1,9 @@
 import { Model, DataTypes, Sequelize, HasOne } from "sequelize";
 import bcrypt from "bcrypt";
 class User extends Model {
+  dataValues(dataValues: any) {
+    throw new Error("Method not implemented.");
+  }
   id: number;
   email: string;
   username: string;

@@ -6,9 +6,13 @@ import CreateMarketplaceService from "../Services/marketplace/CreateMarketplaceS
 class MarketplaceController {
   async show(req: Request, res: Response): Promise<Response> {
     const marketplace = await Marketplace.findAll({
+      where: { user_id: req.userId },
       include: [
         {
           association: "addresses",
+        },
+        {
+          association: "contacts",
         },
       ],
     });

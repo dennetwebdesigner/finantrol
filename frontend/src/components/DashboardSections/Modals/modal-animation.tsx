@@ -1,10 +1,6 @@
-import { MouseEvent, MutableRefObject } from 'react';
+import { MutableRefObject } from 'react';
 
-export const modal_close_animation = (
-  e: MouseEvent,
-  parentModalEl: MutableRefObject<any>,
-): void => {
-  const modal = parentModalEl.current;
+export const modal_close_animation = (modal: any): void => {
   modal.style.transition = '.5s';
   modal.style.opacity = 0;
   setTimeout(() => {

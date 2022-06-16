@@ -1,21 +1,37 @@
 import '../modal-commom.css';
 
-import React, { forwardRef } from 'react';
+import React, {
+  forwardRef,
+  LegacyRef,
+  MutableRefObject,
+  useEffect,
+  useState,
+} from 'react';
 
 import { modal_close_animation } from '../modal-animation';
 
-export const ModalSale = forwardRef((props, ref) => {
+// eslint-disable-next-line react/display-name
+export const ModalSale = forwardRef((props, ref: LegacyRef<HTMLDivElement>) => {
+  const [buttonClosed, setButtonClosed] =
+    useState<MutableRefObject<HTMLDivElement> | null>(null);
+
+  useEffect(() => {
+    const convertRef = ref as MutableRefObject<HTMLDivElement>;
+    setButtonClosed(convertRef);
+  }, []);
+
   return (
-    <main className="modal-commom" ref={ref}>
+    <div className="modal-commom" ref={ref}>
       <section className="modal-commom-form">
-        <p
+        <button
           className="modal-commom-close"
-          onClick={(e) => {
-            modal_close_animation(e, ref);
+          onClick={() => {
+            modal_close_animation(buttonClosed?.current);
           }}
+          onKeyDown={() => modal_close_animation(buttonClosed?.current)}
         >
           X
-        </p>
+        </button>
         <h3 className="modal-commom-title">Registrar Venda</h3>
         <div className="modal-commom-group">
           <article>
@@ -27,6 +43,6 @@ export const ModalSale = forwardRef((props, ref) => {
           </article>
         </div>
       </section>
-    </main>
+    </div>
   );
 });

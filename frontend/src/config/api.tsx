@@ -5,7 +5,6 @@ import { getKeys, validateKeys } from '../helpers/KeysHelpers';
 const baseURL = 'http://localhost:3333';
 let token = validateKeys() && getKeys().token.length > 1 ? getKeys().token : null;
 
-console.log(token);
 const Authorization = !token ? '' : `bearer ${token}`;
 const timeout = 2000;
 const headers = {

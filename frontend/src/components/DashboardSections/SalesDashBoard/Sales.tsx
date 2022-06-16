@@ -8,7 +8,7 @@ import { ModalSale } from '../Modals/ModalSales/ModalSale';
 
 export const Sales = () => {
   // modal ref for create new sales - incomplet
-  const modalSaleEl = useRef(null);
+  const modalSaleEl = useRef<HTMLDivElement>(null);
   return (
     <div className="sale-container">
       {/* TOPO */}

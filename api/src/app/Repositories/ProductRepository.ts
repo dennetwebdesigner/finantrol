@@ -13,9 +13,12 @@ interface iProductRepository {
   stock: string;
 }
 class ProductRepository {
-  async findByMarketplace(user_id: number): Promise<Pick<Marketplace, "id">> {
+  async findByMarketplace(
+    user_id: number,
+    marketplace_id: number
+  ): Promise<Pick<Marketplace, "id">> {
     const marketplace = await Marketplace.findOne({
-      where: { user_id },
+      where: { user_id, id: marketplace_id },
       attributes: ["id"],
     });
 
@@ -24,9 +27,10 @@ class ProductRepository {
 
   async findByName(
     name: string,
-    user_id: number
+    user_id: number,
+    marketplace_id: number
   ): Promise<Pick<Product, ["id", "name"] | any>> {
-    const marketplace = await this.findByMarketplace(user_id);
+    const marketplace = await this.findByMarketplace(user_id, marketplace_id);
 
     const product = await Product.findOne({
       where: { marketplace_id: marketplace.id, name },

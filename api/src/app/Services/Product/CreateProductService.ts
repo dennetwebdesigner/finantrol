@@ -1,6 +1,7 @@
 import ProductRepository from "../../Repositories/ProductRepository";
 
 interface iCreateProductService {
+  marketplace_id: number;
   user_id: number;
   name: string;
   description: string;
@@ -16,8 +17,18 @@ class CreateProductService {
     this.repository = repository;
   }
 
-  async execute({ user_id, name, description, value, code, tags, stock }) {
+  async execute({
+    marketplace_id,
+    user_id,
+    name,
+    description,
+    value,
+    code,
+    tags,
+    stock,
+  }) {
     if (
+      !marketplace_id ||
       !user_id ||
       !name ||
       !description ||
@@ -31,7 +42,10 @@ class CreateProductService {
       );
     }
 
-    const marketplace = await this.repository.findByMarketplace(user_id);
+    const marketplace = await this.repository.findByMarketplace(
+      user_id,
+      marketplace_id
+    );
 
     if (!marketplace) {
       throw new Error(
@@ -39,7 +53,11 @@ class CreateProductService {
       );
     }
 
-    const productExist = await this.repository.findByName(name, user_id);
+    const productExist = await this.repository.findByName(
+      name,
+      user_id,
+      marketplace_id
+    );
 
     if (productExist) {
       throw new Error(
@@ -49,7 +67,7 @@ class CreateProductService {
 
     try {
       const product = await this.repository.save({
-        marketplace_id: marketplace.id,
+        marketplace_id,
         name,
         description,
         value,

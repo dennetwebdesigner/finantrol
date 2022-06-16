@@ -9,7 +9,7 @@ import { ModalProducts } from '../Modals/ModalProducts/ModalProduct';
 
 export const Products = () => {
   // modal element ref for create new product
-  const modalProductEl = useRef(null);
+  const modalProductEl = useRef<HTMLDivElement>(null);
   return (
     <div className="marketplace-container">
       {/* TOPO */}
