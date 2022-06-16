@@ -1,15 +1,25 @@
-# Vite + React + Typescript + Eslint + Prettier
+# Projeto de Controle Financeiro para pequenos negocios
 
-A starter for React with Typescript with the fast Vite and all static code testing with Eslint and formatting with Prettier.
+Muitos negocios não tem acesso a um sistema de estoque e contabilidade, esse projeto visa dar assistência nessa area a comercios familiares, serviços e outros que precisem controlar de maneira simploes suas finanças e/ou estoques.
 
-![Vite + React + Typescript + Eslint + Prettier](/resources/screenshot.png)
+# Tecnologias
 
-I found out about Vite and I wanted to have a boilerplate for the technologies that I use. You can find more about these in the following links: [Vite](https://github.com/vitejs/vite), [React](https://reactjs.org/), [Typescript](https://www.typescriptlang.org/), [Eslint](https://eslint.org/), [Prettier](https://prettier.io/).
+frontend
+![Vite + React + Typescript + Eslint + Prettier](/resources/Screenshot.png)
+
+backend
+[Express + mysql2 + sequelize]()
+
+
+
+
 
 ## Installation
 
-Clone the repo and run `yarn install`
+Clone o repositorio e executa o comando `yarn install` dentro das pastas api e frontend.
+
+Lembrar que necessario ter um servidor mysql e rodar os comando do sequelize-cli.
 
 ## Start
 
-After the successfull installation of the packages: `yarn dev`
+depois de instalado entre nas respsctivas pastas e execute em ambas: `yarn dev`
