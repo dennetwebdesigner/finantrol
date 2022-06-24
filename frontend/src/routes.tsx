@@ -17,7 +17,8 @@ export const Router = () => {
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/" element={<HomePage />}>
           <Route path="" element={<Sales />}></Route>
-          <Route path="/marketplace" element={<Marketplace />}></Route>
+          <Route path="/sales" element={<Sales />}></Route>
+          <Route path="/marketplaces" element={<Marketplace />}></Route>
           <Route path="/products" element={<Products />}></Route>
         </Route>
         <Route path="*" element={<PageNotFound />} />

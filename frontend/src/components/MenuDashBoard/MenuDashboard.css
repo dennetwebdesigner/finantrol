@@ -12,8 +12,9 @@
   left: -100%;
 }
 
-.menu-dashboard a {
+.dashboard-menu-link {
   color: #3d5071;
+  cursor: pointer;
 }
 
 .dashboard-menu-tittle {

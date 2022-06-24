@@ -1,19 +1,19 @@
 import './MenuDashboard.css';
 
 import React, { useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 // import icons images
 import {
-  employees,
+  // employees,
   marketplace,
   menu,
   product,
-  profile,
+  // profile,
   sale,
 } from '../../assets/img/icons';
 // import animatyions menu
 import { menuAnimation } from './menuAnimation';
+import { MenuDashboardLink } from './MenuDashboardLink';
 
 export const MenuDashboard = (): JSX.Element => {
   // ref of element menu jsx
@@ -48,86 +48,40 @@ export const MenuDashboard = (): JSX.Element => {
       </button>
 
       {/* LISTA DE LINKS */}
-      <ul className="dashboard-list-menu">
+      <nav>
         {/* ITEM MENU */}
-        <li className="dashboard-menu-item">
-          <div
-            onClick={handleMenuButtonClick}
-            onKeyDown={handleMenuButtonClick}
-            role="button"
-            tabIndex={0}
-          >
-            <div className="icon-container-menu-item">
-              <img src={sale} alt="" />
-            </div>
-
-            <Link to="/">Início</Link>
-          </div>
-        </li>
+        <MenuDashboardLink
+          value={{ name: 'Vendas', link: '' }}
+          icon={sale}
+          refs={{
+            menu: menuDashBoardEl,
+            closeButton: closeButtonMenuDashBoardEl,
+            MenuIcon: imageMenu,
+          }}
+        />
 
         {/* ITEM MENU */}
-        <li className="dashboard-menu-item">
-          <div
-            onClick={handleMenuButtonClick}
-            onKeyDown={handleMenuButtonClick}
-            role="button"
-            tabIndex={0}
-          >
-            <div className="icon-container-menu-item">
-              <img src={marketplace} alt="" />
-            </div>
-            <Link to="/marketplace">Loja/Serviço</Link>
-          </div>
-        </li>
+        <MenuDashboardLink
+          value={{ name: 'Lojas', link: 'marketplaces' }}
+          icon={marketplace}
+          refs={{
+            menu: menuDashBoardEl,
+            closeButton: closeButtonMenuDashBoardEl,
+            MenuIcon: imageMenu,
+          }}
+        />
 
         {/* ITEM MENU */}
-        <li className="dashboard-menu-item">
-          <div
-            onClick={handleMenuButtonClick}
-            onKeyDown={handleMenuButtonClick}
-            role="button"
-            tabIndex={0}
-          >
-            <div className="icon-container-menu-item">
-              <Link to="/products">
-                <img src={product} alt="" />
-              </Link>
-            </div>
-            <Link to="/products">Produtos</Link>
-          </div>
-        </li>
-
-        {/* ITEM MENU */}
-        <li className="dashboard-menu-item">
-          <div
-            onClick={handleMenuButtonClick}
-            onKeyDown={handleMenuButtonClick}
-            role="button"
-            tabIndex={0}
-          >
-            <div className="icon-container-menu-item">
-              <img src={employees} alt="" />
-            </div>
-            Funcionarios
-          </div>
-        </li>
-
-        {/* ITEM MENU */}
-        <li className="dashboard-menu-item">
-          {' '}
-          <div
-            onClick={handleMenuButtonClick}
-            onKeyDown={handleMenuButtonClick}
-            role="button"
-            tabIndex={0}
-          >
-            <div className="icon-container-menu-item">
-              <img src={profile} alt="" />
-            </div>
-            Perfil
-          </div>
-        </li>
-      </ul>
+        <MenuDashboardLink
+          value={{ name: 'Produtos', link: 'products' }}
+          icon={product}
+          refs={{
+            menu: menuDashBoardEl,
+            closeButton: closeButtonMenuDashBoardEl,
+            MenuIcon: imageMenu,
+          }}
+        />
+      </nav>
     </div>
   );
 };
