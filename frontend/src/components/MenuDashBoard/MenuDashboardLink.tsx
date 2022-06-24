@@ -48,7 +48,7 @@ export const MenuDashboardLink = ({
         <div className="icon-container-menu-item">
           <img src={icon} alt="" />
         </div>
-        <div>{name}</div>
+        <div className="container-menu-item">{name}</div>
       </div>
     </section>
   );

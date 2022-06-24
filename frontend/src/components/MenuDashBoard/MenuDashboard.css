@@ -74,7 +74,35 @@
 @media (min-width: 1360px) {
   .menu-dashboard {
     left: 0;
-    width: 200px;
+    width: 350px;
+    background-color: var(--color-alert);
+    box-shadow: 5px 0px 6px var(--color-dark);
+    position: fixed;
+  }
+  .dashboard-menu-tittle {
+    color: var(--color-light);
+    font-size: 3rem;
+    margin-top: 40px;
+    text-align: center;
+  }
+  .dashboard-menu-subtittle {
+    color: var(--color-light);
+    margin-bottom: 60px;
+    text-align: center;
+  }
+  .dashboard-menu-item {
+    width: 75%;
+    margin: 30px auto;
+  }
+  .container-menu-item {
+    color: var(--color-light);
+    font-size: 1.4em;
+    font-weight: 500;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .icon-container-menu-item {
+    width: 40px;
+    height: 40px;
   }
   .dashboard-menu-close {
     display: none;
