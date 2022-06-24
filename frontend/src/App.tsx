@@ -1,10 +1,11 @@
-// import { Router } from './routes'
 import './App.css';
 
-import { Navegation } from './components/Navegation';
+import React from 'react';
+
+import { Router } from './routes';
 
 function App() {
-  return <Navegation />;
+  return <Router />;
 }
 
 export default App;

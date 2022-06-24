@@ -1,19 +1,26 @@
-import React, { ReactComponentElement } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-const TestElement = () => {
-  return (
-    <>
-      <h1>Test Home</h1>
-    </>
-  );
-};
+import { Marketplace } from './components/DashboardSections/MarketplaceDashBoard/Marketplace';
+import { Products } from './components/DashboardSections/ProductsDashBoard/Products';
+import { Sales } from './components/DashboardSections/SalesDashBoard/Sales';
+import { PageNotFound } from './pages/Errors/PageNotFound';
+import { Home as HomePage } from './pages/Home/Home';
+import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
 
-export const Router = (): JSX.Element => {
+export const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<TestElement />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/" element={<HomePage />}>
+          <Route path="" element={<Sales />}></Route>
+          <Route path="/marketplace" element={<Marketplace />}></Route>
+          <Route path="/products" element={<Products />}></Route>
+        </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
   );

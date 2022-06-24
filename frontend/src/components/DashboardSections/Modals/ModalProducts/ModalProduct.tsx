@@ -62,7 +62,9 @@ export const ModalProducts = forwardRef((props, ref: LegacyRef<HTMLDivElement>) 
         <h3 className="modal-commom-title">Registrar Produtos</h3>
         <div className="modal-commom-group">
           <article>
-            <label htmlFor="a">Selecione a loja</label>
+            <label className="modal-commom-group-commom" htmlFor="a">
+              Selecione a loja
+            </label>
             <Select
               className="modal-commom-group-commom"
               options={optionsSelectNarketplaces}

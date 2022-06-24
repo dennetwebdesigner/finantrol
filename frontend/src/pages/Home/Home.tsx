@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import { MenuDashboard } from '../../components/MenuDashBoard';
+import { MenuDashboard } from '../../components/MenuDashBoard/MenuDashboard';
 import MarketplaceController from '../../controllers/MarketplaceController';
 import { authValidate } from '../../helpers/authHelpers';
 import { validateKeys } from '../../helpers/KeysHelpers';
