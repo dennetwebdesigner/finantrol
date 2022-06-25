@@ -77,7 +77,7 @@
     width: 350px;
     background-color: var(--color-alert);
     box-shadow: 5px 0px 6px var(--color-dark);
-    position: fixed;
+    position: static;
   }
   .dashboard-menu-tittle {
     color: var(--color-light);
