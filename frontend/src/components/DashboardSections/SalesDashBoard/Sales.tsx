@@ -1,8 +1,9 @@
+import '../css/commom-sections.css';
 import './Sales.css';
 
 import React, { useRef } from 'react';
 
-import { money, plus } from '../../../assets/img/icons';
+import { money } from '../../../assets/img/icons';
 import { modal_open_animation } from '../Modals/modal-animation';
 import { ModalSale } from '../Modals/ModalSales/ModalSale';
 
@@ -10,20 +11,20 @@ export const Sales = () => {
   // modal ref for create new sales - incomplet
   const modalSaleEl = useRef<HTMLDivElement>(null);
   return (
-    <div className="sale-container">
+    <div className="dsh-container">
       {/* TOPO */}
       <header className="sale-section-top">
         {/* TITULO */}
-        <h1>Resumo</h1>
+        <h1 className="dsh-section-title">Resumo</h1>
 
         {/* CRIAR NOVA VENDA */}
         <button
-          className="new-sale "
+          className="new-item-button"
           onClick={() => {
             modal_open_animation(modalSaleEl);
           }}
         >
-          <img src={plus} alt="img icon cross, imagem icone de cruz" />
+          <p>+</p>
           <p>Nova venda</p>
         </button>
       </header>

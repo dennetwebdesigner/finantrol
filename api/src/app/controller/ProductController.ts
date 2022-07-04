@@ -4,13 +4,15 @@ import CreateProductService from "../Services/Product/CreateProductService";
 
 class ProductController {
   async create(req: Request, res: Response): Promise<Response> {
-    const { name, description, value, code, tags, stock } = req.body;
+    const { marketplace_id, name, description, value, code, tags, stock } =
+      req.body;
     const user_id = req.userId;
 
     try {
       const service = new CreateProductService(new ProductRepository());
 
       const product = await service.execute({
+        marketplace_id,
         user_id,
         name,
         description,

@@ -12,7 +12,6 @@ const initialState: iState = {
 
 const marketplaceReducer = createReducer(initialState, (builder) => {
   builder.addCase(addAllMarketplace, (state, action) => {
-    console.log(action.payload);
     state.marketplace = action.payload as unknown as Array<object>;
   });
 });

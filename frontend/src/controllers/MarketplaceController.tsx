@@ -1,5 +1,3 @@
-import { AxiosResponse } from 'axios';
-
 import { api } from '../config/api';
 interface iMarketplaceData {
   name: string;
@@ -35,14 +33,16 @@ class MarketplaceController {
   async list() {
     const response = await api.get('/marketplaces');
 
-    const data = response.data.map((marketplace: iMarketplaceList) => {
-      return {
-        id: marketplace.id,
-        name: marketplace.name,
-        addresses: marketplace.addresses[0],
-        contacts: marketplace.contacts[0],
-      };
-    });
+    const data = response.data
+      .sort((a: any, b: any) => (a.name > b.name ? 1 : -1))
+      .map((marketplace: iMarketplaceList) => {
+        return {
+          id: marketplace.id,
+          name: marketplace.name,
+          addresses: marketplace.addresses[0],
+          contacts: marketplace.contacts[0],
+        };
+      });
 
     return data;
   }
@@ -58,9 +58,35 @@ class MarketplaceController {
     country,
     data,
     type,
-  }: iMarketplaceData): Promise<AxiosResponse<any, any>> {
+  }: iMarketplaceData): Promise<
+    | {
+        id: number;
+        name: string;
+        addresses: {
+          city: string;
+          state: string;
+        };
+      }
+    | any
+  > {
+    if (
+      name.length == 0 ||
+      number.length == 0 ||
+      street.length == 0 ||
+      destrict.length == 0 ||
+      city.length == 0 ||
+      state.length == 0 ||
+      country.length == 0 ||
+      data.length == 0 ||
+      type.length == 0
+    ) {
+      return {
+        error: { message: 'Todos os campos devem ser preenchidos corretamente!' },
+      };
+    }
+
     // send data for api
-    const response = await api.post('/marketplaces', {
+    const response = (await api.post('/marketplaces', {
       name,
       number,
       street,
@@ -70,9 +96,18 @@ class MarketplaceController {
       country,
       data,
       type,
-    });
-    // return response
-    return response;
+    })) as any;
+    if (response.data) {
+      // return response
+      return {
+        id: response.id,
+        name,
+        addresses: {
+          city,
+          state,
+        },
+      };
+    }
   }
   async update() {}
   async destroy() {}

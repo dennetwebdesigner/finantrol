@@ -1,8 +1,8 @@
-import '../MarketplaceDashBoard/MarketplaceDashboard.css';
+import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import Select from 'react-select';
 
-import React, { useRef } from 'react';
-
-import { edit, plus, see, trash } from '../../../assets/img/icons';
+import { edit, see, trash } from '../../../assets/img/icons';
 import { RowTh } from '../../table/Row';
 import { modal_open_animation } from '../Modals/modal-animation';
 import { ModalProducts } from '../Modals/ModalProducts/ModalProduct';
@@ -10,30 +10,57 @@ import { ModalProducts } from '../Modals/ModalProducts/ModalProduct';
 export const Products = () => {
   // modal element ref for create new product
   const modalProductEl = useRef<HTMLDivElement>(null);
+  const [marketplaceId, setMarketplaceId] = useState<number | null>(null);
+  const [optionsSelectNarketplaces, setOptionsSelectNarketplaces] = useState<any[]>([]);
+
+  const marketplaceState = useSelector((state: any) => state.marketplace.marketplace);
+
+  useEffect(() => {
+    const options = marketplaceState.map((item: any) => {
+      return {
+        value: item.id,
+        label: item.name,
+      };
+    });
+
+    setOptionsSelectNarketplaces(options);
+  }, [marketplaceState]);
   return (
-    <div className="marketplace-container">
+    <div className="dsh-container">
       {/* TOPO */}
-      <header className="marketplace-section-top">
+      <header className="dsh-section-top">
         {/* TITULO */}
-        <h1>Produtos</h1>
+        <h1 className="dsh-section-title">Produtos</h1>
 
         {/* CRIAR NOVA VENDA */}
         <button
-          className="new-commerce "
+          className="new-item-button"
           onClick={() => {
             modal_open_animation(modalProductEl);
           }}
         >
-          <img src={plus} alt="" />
-          <p>adicionar</p>
+          <p>+</p>
+          <p>Novo Produto</p>
         </button>
       </header>
       {/* FIM TOPO */}
-      <main className="marketplace-body">
+      <main className="dsh-section-body">
+        <section>
+          <label className="modal-commom-group-commom" htmlFor="a">
+            Selecione a loja
+          </label>
+          <Select
+            className="modal-commom-group-commom select-control"
+            options={optionsSelectNarketplaces}
+            onChange={(e: any) => {
+              setMarketplaceId(e.value);
+            }}
+          />
+        </section>
         <RowTh
           Margin=""
           Width="33%"
-          Background="#fff"
+          Background="transparent"
           Padding="10px 5px"
           Content={[
             {
@@ -52,7 +79,7 @@ export const Products = () => {
         <RowTh
           Margin=""
           Width="33%"
-          Background="#fff"
+          Background="transparent"
           Padding="20px 5px"
           Content={[
             {
@@ -64,13 +91,13 @@ export const Products = () => {
 
             {
               content: [
-                <button className="btn-mkt" key={1}>
+                <button className="btn-action-item" key={1}>
                   <img src={see} alt="" />
                 </button>,
-                <button className="btn-mkt" key={2}>
+                <button className="btn-action-item" key={2}>
                   <img src={edit} alt="" />
                 </button>,
-                <button className="btn-mkt" key={3}>
+                <button className="btn-action-item" key={3}>
                   <img src={trash} alt="" />
                 </button>,
               ],
@@ -78,7 +105,7 @@ export const Products = () => {
           ]}
         />
       </main>
-      <ModalProducts ref={modalProductEl} />
+      <ModalProducts ref={modalProductEl} marketplaceId={marketplaceId} />
     </div>
   );
 };

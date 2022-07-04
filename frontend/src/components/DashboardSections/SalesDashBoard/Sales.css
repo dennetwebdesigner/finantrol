@@ -1,10 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Montserrat:wght@500;600&family=Roboto+Condensed&display=swap');
-.sale-container {
-  display: block;
-  width: 100%;
-  background: #e1e1e1;
-}
-
 .sale-section-top {
   width: 100%;
   height: 50px;
@@ -16,57 +10,30 @@
   align-items: center;
 }
 
-.sale-section-top h1 {
-  font-weight: light;
-  margin-right: 20px;
-}
-
-.new-sale {
-  align-items: center;
-  border: none;
-  display: flex;
-  margin-left: 20px;
-  margin-top: 5px;
-}
-
-.new-sale img {
-  width: 27px;
-  margin-right: 5px;
-}
-
-.new-sale p {
-  font-weight: bolder;
-  font-size: 15px;
-}
-
-.new-sale:hover p,
-.new-sale:hover img {
-  opacity: 0.4;
-}
-
 .show-finance {
   display: flex;
   list-style: none;
   flex-wrap: wrap;
-  margin-top: 40px;
+  margin: 80px auto;
   padding: 3px 15px;
+  max-width: 500px;
 }
 
 .show-finance li {
   display: flex;
   width: 100%;
   align-items: center;
-  margin-bottom: 10px;
   justify-content: center;
-  background-color: #fff;
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+  background-color: var(--color-dark);
+  border: 1px solid var(--color-light);
   padding: 5px 0;
   border-radius: 5px;
 }
 
 .show-finance li .show-finance-info {
   margin-right: 5px;
-  width: 50%;
+  width: 35%;
+  justify-content: end;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -102,7 +69,7 @@
 
 .historic-sales {
   padding: 0 20px;
-  background-color: #fff;
+  background-color: var(--color-dark);
   width: 95%;
   margin: 15px auto 0;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
@@ -119,7 +86,7 @@
 
 .table-hs-col {
   flex: 1;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid var(--color-light);
   padding: 15px 3px;
   display: flex;
   align-items: center;

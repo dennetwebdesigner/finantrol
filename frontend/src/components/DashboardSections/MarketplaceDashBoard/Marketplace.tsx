@@ -1,9 +1,7 @@
-import './MarketplaceDashBoard.css';
-
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { edit, plus, see, trash } from '../../../assets/img/icons';
+import { edit, see, trash } from '../../../assets/img/icons';
 import { iMarketplaceList } from '../../../controllers/MarketplaceController';
 import { RowTh } from '../../table/Row';
 import { modal_open_animation } from '../Modals/modal-animation';
@@ -23,28 +21,28 @@ export const Marketplace = (): JSX.Element => {
   }, [marketplaceState]);
 
   return (
-    <div className="marketplace-container">
+    <div className="dsh-container">
       {/* TOPO */}
-      <header className="marketplace-section-top">
+      <header className="dsh-section-top">
         {/* TITULO */}
-        <h1>Lojas/Serviços</h1>
+        <h1 className="dsh-section-title">Lojas/Serviços</h1>
 
         {/* CRIAR NOVA VENDA */}
         <button
-          className="new-commerce"
+          className="new-item-button"
           onClick={() => {
             modal_open_animation(modalEl);
           }}
         >
-          <img src={plus} alt="" />
-          <p className="create-new-marketplace">adicionar</p>
+          <p>+</p>
+          <p className="create-new-marketplace">Nova Loja</p>
         </button>
       </header>
       {/* FIM TOPO */}
-      <main className="marketplace-body">
+      <main className="dsh-section-body">
         <RowTh
           Width="33%"
-          Background="#fff"
+          Background="transparent"
           Padding="10px 5px"
           Margin=""
           Content={[
@@ -61,11 +59,11 @@ export const Marketplace = (): JSX.Element => {
           ]}
         />
 
-        {marketplaces.map((marketplace) => (
+        {marketplaces.map((marketplace, index) => (
           <RowTh
-            key={marketplace.id}
+            key={index}
             Width="33%"
-            Background="#fff"
+            Background="transparent"
             Padding="20px 5px"
             Margin=""
             Content={[
@@ -78,13 +76,13 @@ export const Marketplace = (): JSX.Element => {
 
               {
                 content: [
-                  <button className="btn-mkt" key={1}>
+                  <button className="btn-action-item" key={1}>
                     <img src={see} alt="" />
                   </button>,
-                  <button className="btn-mkt" key={2}>
+                  <button className="btn-action-item" key={2}>
                     <img src={edit} alt="" />
                   </button>,
-                  <button className="btn-mkt" key={3}>
+                  <button className="btn-action-item" key={3}>
                     <img src={trash} alt="" />
                   </button>,
                 ],
@@ -93,7 +91,11 @@ export const Marketplace = (): JSX.Element => {
           />
         ))}
       </main>
-      <ModalMarketplace ref={modalEl} />
+      <ModalMarketplace
+        ref={modalEl}
+        setMarkeplaces={setMarkeplaces}
+        marketplaces={marketplaces}
+      />
     </div>
   );
 };

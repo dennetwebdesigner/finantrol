@@ -21,20 +21,24 @@
 
 .container-sections {
   width: 100%;
+  color: var(--color-light);
+  height: 100%;
+  overflow-y: auto;
 }
 
 @media (min-width: 960px) {
   body {
-    background-color: #e1e1e1;
+    background-color: var(--color-dark);
   }
   .dashboard-container {
     width: 100%;
     margin: 0 auto;
   }
   .container-sections {
-    max-width: 960px;
+    max-width: 100%;
     margin: auto;
     height: 100%;
+    overflow-y: auto;
   }
 }
 
