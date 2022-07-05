@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "reactjs-localstorage": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/reactjs-localstorage": "^1.0.0"
+  }
+}

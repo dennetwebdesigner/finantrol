@@ -1,9 +1,21 @@
-import { api } from '../config/api';
+import ProductRepository from '../../Repositories/ProductRepository';
 
-class ProductsController {
-  async index() {}
-  // create  a new product
-  async store({
+interface iCreateProducts {
+  marketplace_id: number;
+  name: string;
+  description: string;
+  value: number;
+  code: string;
+  stock: number;
+  tags: string;
+}
+
+class CreateProductService {
+  private repository;
+  constructor(repository: ProductRepository) {
+    this.repository = repository;
+  }
+  async execute({
     marketplace_id,
     name,
     value,
@@ -11,15 +23,7 @@ class ProductsController {
     tags,
     stock,
     description,
-  }: {
-    marketplace_id: number;
-    name: string;
-    description: string;
-    value: number;
-    code: string;
-    stock: number;
-    tags: string;
-  }): Promise<any> {
+  }: iCreateProducts): Promise<any> {
     if (!marketplace_id)
       return {
         error: {
@@ -29,9 +33,9 @@ class ProductsController {
     else if (!name || !value || !stock || !description || !code || !tags) {
       return { error: { message: 'todos os campos devem ser preenchidos corretamente' } };
     }
+
     try {
-      // send data for api
-      const product: any = await api.post('/products', {
+      const product = await this.repository.save({
         marketplace_id,
         name,
         value,
@@ -40,15 +44,12 @@ class ProductsController {
         stock,
         description,
       });
+
       return product;
-    } catch (error: any) {
+    } catch (error) {
       return error;
     }
-
-    // return response
   }
-  async update() {}
-  async destroy() {}
 }
 
-export default new ProductsController();
+export default CreateProductService;

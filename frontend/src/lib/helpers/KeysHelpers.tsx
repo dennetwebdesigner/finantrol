@@ -13,10 +13,12 @@ export const getKeys = () => {
   };
 };
 
-export const setKeys = (values = null) => {
-  if (values.token) localStorage.set('token', values.token);
-  if (values.isAuth) localStorage.set('isAuth', values.isAuth);
-  if (values.userId) localStorage.set('userId', values.userId);
+export const setKeys = (
+  values: null | { token: string; isAuth: boolean; userId: number } = null,
+) => {
+  if (values && values.token) localStorage.set('token', values.token);
+  if (values && values.isAuth) localStorage.set('isAuth', values.isAuth);
+  if (values && values.userId) localStorage.set('userId', values.userId);
 
   return getKeys();
 };

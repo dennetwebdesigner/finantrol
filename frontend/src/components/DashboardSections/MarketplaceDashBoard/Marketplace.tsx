@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import { edit, see, trash } from '../../../assets/img/icons';
-import { iMarketplaceList } from '../../../controllers/MarketplaceController';
+import { iMarketplaceList } from '../../../lib/controllers/MarketplaceController';
 import { RowTh } from '../../table/Row';
 import { modal_open_animation } from '../Modals/modal-animation';
 // componente modal

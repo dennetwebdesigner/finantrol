@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 import Select from 'react-select';
 
-import MarketplaceController from '../../../../controllers/MarketplaceController';
+import MarketplaceController from '../../../../lib/controllers/MarketplaceController';
 import { modal_close_animation } from '../modal-animation';
 
 export const ModalMarketplace = forwardRef(

@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import ProductsController from '../../../../controllers/ProductsController';
+import ProductsController from '../../../../lib/controllers/ProductsController';
 import { modal_close_animation } from '../modal-animation';
 
 export const ModalProducts = forwardRef(
@@ -27,30 +27,7 @@ export const ModalProducts = forwardRef(
     const [buttonClosed, setButtonClosed] =
       useState<MutableRefObject<HTMLDivElement> | null>(null);
 
-    const handleSubmitProduct = async (e: any): Promise<any> => {
-      e.preventDefault();
-
-      const products = await ProductsController.store({
-        marketplace_id: props.marketplaceId as unknown as number,
-        name: nameProduct,
-        code,
-        value: price,
-        tags,
-        description,
-        stock,
-      });
-
-      if (products.error) {
-        alert(products.error.message);
-        return;
-      }
-
-      if (products.response && products.response.status == 400) {
-        alert(`CodeError: ${products.response.status}, Error: ${products.response.data}`);
-        return;
-      }
-      alert(`Produto: ${products.data.name} criado com sucesso!`);
-
+    const clear = () => {
       setNameProduct('');
       setDescription('');
       setCode('');
@@ -59,6 +36,24 @@ export const ModalProducts = forwardRef(
       setStock(0);
       setTags('');
       setRandomCodeActive(false);
+    };
+
+    const handleSubmitProduct = async (e: any): Promise<any> => {
+      e.preventDefault();
+
+      await ProductsController.store(
+        e,
+        {
+          marketplace_id: props.marketplaceId as unknown as number,
+          name: nameProduct,
+          code,
+          value: price,
+          tags,
+          description,
+          stock,
+        },
+        clear,
+      );
     };
 
     useEffect(() => {

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-import { getKeys, validateKeys } from '../helpers/KeysHelpers';
+import { getKeys, validateKeys } from '../lib/helpers/KeysHelpers';
 
 const baseURL = 'http://localhost:3333';
-let token = validateKeys() && getKeys().token.length > 1 ? getKeys().token : null;
+let token = validateKeys() && getKeys().token != '' ? getKeys().token : null;
 
 const Authorization = !token ? '' : `bearer ${token}`;
 const timeout = 2000;

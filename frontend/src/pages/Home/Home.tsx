@@ -5,9 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { MenuDashboard } from '../../components/MenuDashBoard/MenuDashboard';
-import MarketplaceController from '../../controllers/MarketplaceController';
-import { authValidate } from '../../helpers/authHelpers';
-import { validateKeys } from '../../helpers/KeysHelpers';
+import MarketplaceController from '../../lib/controllers/MarketplaceController';
+import { authValidate } from '../../lib/helpers/authHelpers';
+import { validateKeys } from '../../lib/helpers/KeysHelpers';
 import { destroyAuth } from '../../store/actions/authActions';
 import { PermissionDenied } from '../Errors/PermissionDenied';
 
