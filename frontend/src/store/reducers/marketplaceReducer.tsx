@@ -3,7 +3,7 @@ import { createReducer } from '@reduxjs/toolkit';
 import { addAllMarketplace } from '../actions/MarketplaceActions';
 
 interface iState {
-  marketplace: Array<object>;
+  marketplace: Object[];
 }
 
 const initialState: iState = {
