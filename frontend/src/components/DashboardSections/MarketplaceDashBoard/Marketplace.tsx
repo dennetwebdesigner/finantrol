@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { edit, see, trash } from '../../../assets/img/icons';
+import { edit, see } from '../../../assets/img/icons';
 import { iMarketplaceList } from '../../../lib/controllers/MarketplaceController';
+import MarketplaceController from '../../../lib/controllers/MarketplaceController';
 import { RowTh } from '../../table/Row';
 import { modal_open_animation } from '../Modals/modal-animation';
 // componente modal
 import { ModalMarketplace } from '../Modals/ModalMarketplace/ModalMarketplace';
-
+import { ButtonRemove } from '../Utils/ButtonRemove';
 export const Marketplace = (): JSX.Element => {
   //  refenrecia elemento modal criação de lojas
   const modalEl = useRef(null);
@@ -82,9 +83,12 @@ export const Marketplace = (): JSX.Element => {
                   <button className="btn-action-item" key={2}>
                     <img src={edit} alt="" />
                   </button>,
-                  <button className="btn-action-item" key={3}>
-                    <img src={trash} alt="" />
-                  </button>,
+                  <ButtonRemove
+                    key={3}
+                    where="marketplaces"
+                    identification={marketplace.id}
+                    controller={MarketplaceController.destroy}
+                  />,
                 ],
               },
             ]}

@@ -1,8 +1,27 @@
 import { Request, Response } from "express";
 import ProductRepository from "../Repositories/ProductRepository";
 import CreateProductService from "../Services/Product/CreateProductService";
+import ListProductsByMarketplaceService from "../Services/Product/ListProductsByMarketplaceService";
 
 class ProductController {
+  async show(req: Request, res: Response): Promise<Response> {
+    const marketplace_id = req.params.marketplace_id as unknown as number;
+    const service = new ListProductsByMarketplaceService(
+      new ProductRepository()
+    );
+
+    try {
+      const products = await service.execute(marketplace_id);
+
+      return res.json(products);
+    } catch (error) {
+      const responseError = JSON.parse(error.message);
+      if (responseError.status)
+        return res.status(responseError.status).json(responseError.message);
+      console.log(error);
+    }
+  }
+
   async create(req: Request, res: Response): Promise<Response> {
     const { marketplace_id, name, description, value, code, tags, stock } =
       req.body;

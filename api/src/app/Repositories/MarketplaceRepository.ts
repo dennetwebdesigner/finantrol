@@ -71,6 +71,13 @@ class MarketplaceRepository {
       throw new Error(JSON.stringify({ message: "", status: 500 }));
     }
   }
+  async remove(user_id: number, marketplace_id: number): Promise<any> {
+    const destroy = await Marketplace.destroy({
+      where: { id: marketplace_id, user_id },
+    });
+
+    return destroy;
+  }
 }
 
 export default MarketplaceRepository;

@@ -13,6 +13,11 @@ interface iProductRepository {
   stock: string;
 }
 class ProductRepository {
+  async listAllbyMarketplace(marketplace_id: number): Promise<any> {
+    const products = await Product.findAll({ where: { marketplace_id } });
+    return products;
+  }
+
   async findByMarketplace(
     user_id: number,
     marketplace_id: number

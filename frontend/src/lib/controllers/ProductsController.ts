@@ -1,8 +1,13 @@
 import ProductRepository from '../Repositories/ProductRepository';
 import CreateProductService from '../Services/Products/CreateProductService';
-
+import ListProductService from '../Services/Products/ListProductService';
 class ProductsController {
   async index() {}
+  async show(marketplace_id: number): Promise<any> {
+    const service = new ListProductService(new ProductRepository());
+    const products = await service.execute(marketplace_id);
+    console.log(products);
+  }
 
   // create  a new product
   async store(

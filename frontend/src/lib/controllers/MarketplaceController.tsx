@@ -1,4 +1,7 @@
 import { api } from '../../config/api';
+import { ErrResolve } from '../helpers/ErrorValidate';
+import MarketplaceRepository from '../Repositories/MarketplaceRepository';
+import DestroyMarketplaceService from '../Services/Marketplaces/DestroyMarketplaceService';
 interface iMarketplaceData {
   name: string;
   number: string;
@@ -110,7 +113,22 @@ class MarketplaceController {
     }
   }
   async update() {}
-  async destroy() {}
+
+  async destroy(id: number): Promise<void> {
+    const repository = new MarketplaceRepository();
+
+    try {
+      const service = new DestroyMarketplaceService(repository);
+      const destroyed = await service.execute(id);
+      window.location.href = '/marketplaces';
+
+      console.log(destroyed);
+      alert(destroyed.message);
+    } catch (error: any) {
+      const resolve = ErrResolve(error.message);
+      if (resolve.error) alert(resolve.error.message);
+    }
+  }
 }
 
 export default new MarketplaceController();

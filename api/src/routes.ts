@@ -26,7 +26,9 @@ router.delete("/users/:userID", UserController.destroy);
 
 router.get("/marketplaces", MarketplaceController.show);
 router.post("/marketplaces", MarketplaceController.create);
+router.delete("/marketplaces/:marketplace_id", MarketplaceController.destroy);
 
 router.post("/products", ProductController.create);
+router.get("/products/:marketplace_id", ProductController.show);
 
 export { router };

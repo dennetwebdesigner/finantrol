@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Select from 'react-select';
 
 import { edit, see, trash } from '../../../assets/img/icons';
+import ProductsController from '../../../lib/controllers/ProductsController';
 import { RowTh } from '../../table/Row';
 import { modal_open_animation } from '../Modals/modal-animation';
 import { ModalProducts } from '../Modals/ModalProducts/ModalProduct';
@@ -10,7 +11,7 @@ import { ModalProducts } from '../Modals/ModalProducts/ModalProduct';
 export const Products = () => {
   // modal element ref for create new product
   const modalProductEl = useRef<HTMLDivElement>(null);
-  const [marketplaceId, setMarketplaceId] = useState<number | null>(null);
+  const [marketplaceId, setMarketplaceId] = useState<number | null>(30);
   const [optionsSelectNarketplaces, setOptionsSelectNarketplaces] = useState<any[]>([]);
 
   const marketplaceState = useSelector((state: any) => state.marketplace.marketplace);
@@ -54,6 +55,7 @@ export const Products = () => {
             options={optionsSelectNarketplaces}
             onChange={(e: any) => {
               setMarketplaceId(e.value);
+              ProductsController.show(marketplaceId as number);
             }}
           />
         </section>

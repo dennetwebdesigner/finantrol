@@ -11,6 +11,11 @@ interface iDataProduct {
 }
 
 class ProductRepository {
+  async getAllbyMarketplace(marketplace_id: number) {
+    const products: any = await api.get(`/products/${marketplace_id}`);
+    return products;
+  }
+
   async save({
     marketplace_id,
     name,
