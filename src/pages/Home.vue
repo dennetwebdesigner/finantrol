@@ -3,7 +3,7 @@
     <AddService
       :modal-add-service="modalAddService"
       v-on:closed-modal="
-        (e:any) => {
+        () => {
           modalAddService = 'hidden';
         }
       "
