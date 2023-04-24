@@ -1,4 +1,5 @@
 <template>
+  <SignIn />
   <main class="w-full flex flex-wrap justify-center p-2 items-center">
     <AddService
       :modal-add-service="modalAddService"
@@ -24,33 +25,19 @@
       @keydown="searchService"
     />
     <section class="w-full p-1 mt-5">
-      <article
-        v-for="token in tokens"
-        class="flex flex-wrap mb-2 border-1 border-slate-400 shadow-md p-2"
-      >
-        <h3 class="w-6/12 text-xl">
-          {{ token.client }}
-        </h3>
-        <p class="w-6/12">
-          Realizado em: <span class="text-right">{{ token.created_at }}</span>
-        </p>
-        <p class="w-6/12">{{ token.contact_type }}: {{ token.contact }}</p>
-        <p class="w-6/12">
-          Pagamento em
-          <span class="font-bold text-lg text-yellow-500 text-right">
-            {{ token.type }}
-          </span>
-        </p>
-      </article>
+      <tokenContainer :tokens="tokens" />
     </section>
     <form class=""></form>
   </main>
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
+import tokenContainer from "@/components/tokenContainer.vue";
 import { iToken } from "../interfaces/TokensService";
 import { tokenGetServices } from "../services/tokens/tokenGetService";
 import AddService from "@/components/AddService.vue";
+import SignIn from "@/components/SignIn.vue";
+
 const tokens = ref<iToken[]>([]);
 const tokensSearch = ref<iToken[]>([]);
 const modalAddService = ref<string>("hidden");
