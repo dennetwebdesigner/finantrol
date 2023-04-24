@@ -1,7 +1,7 @@
 <template>
   <form
     @submit="handleSubmit"
-    :class="`w-full h-screen ${props.modalAddService} flex-wrap items-start pt-5 p-2 absolute top-0 left-0 bg-slate-50`"
+    :class="`w-full h-screen ${props.modalAddService} flex-wrap items-start pt-5 p-2 absolute top-0 left-0 bg-slate-50 z-10`"
   >
     <div class="flex flex-wrap w-full justify-between relative mt-8">
       <h2 class="text-2xl font-bold text-slate-400">Serviço Realizado</h2>

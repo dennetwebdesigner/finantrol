@@ -1,6 +1,6 @@
 <template>
   <SignIn />
-  <main class="w-full flex flex-wrap justify-center p-2 items-center">
+  <main class="w-full flex flex-wrap justify-center items-center">
     <AddService
       :modal-add-service="modalAddService"
       v-on:closed-modal="
@@ -9,21 +9,26 @@
         }
       "
     />
-    <font-awesome-icon
-      icon="circle-plus"
-      class="text-4xl mr-2"
-      @click="
-        () => {
-          modalAddService = 'flex';
-        }
-      "
-    />
-    <input
-      type="text"
-      class="grow h-12 p-2 text-lg shadow-md border-1 border-slate-400"
-      placeholder="pesquizar por serviço especifico"
-      @keydown="searchService"
-    />
+    <div class="w-full flex items-center bg-purple-400 relative h-16 mb-3">
+      <h1 class="text-center text-slate-50 m-auto text-2xl mt-1 font-semibold">
+        Serviços Realizados
+      </h1>
+      <font-awesome-icon
+        icon="circle-plus"
+        class="text-4xl mr-2 absolute left-2 top-[70%]"
+        @click="
+          () => {
+            modalAddService = 'flex';
+          }
+        "
+      />
+      <input
+        type="text"
+        class="w-10/12 h-12 p-2 text-lg shadow-md border-1 border-slate-400 absolute right-2 top-[64%]"
+        placeholder="pesquizar por serviço especifico "
+        @keydown="searchService"
+      />
+    </div>
     <section class="w-full p-1 mt-5">
       <tokenContainer :tokens="tokens" />
     </section>
