@@ -49,7 +49,6 @@ const tokens = ref<iToken[]>([]);
 const tokensSearch = ref<iToken[]>([]);
 const modalAddService = ref<string>("hidden");
 let timerSearch: any = null;
-
 const searchService = (e: any) => {
   clearTimeout(timerSearch);
   timerSearch = setTimeout(async () => {
