@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyBZLQRvY4IdIc7amkSC8Rb6kBF1oe-z5Cs",
-  authDomain: "dluxo-d057b.firebaseapp.com",
-  projectId: "dluxo-d057b",
-  storageBucket: "dluxo-d057b.appspot.com",
-  messagingSenderId: "643613247284",
-  appId: "1:643613247284:web:6cf923d5786cb3b06d4761",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
 };
 
 // Initialize Firebase
