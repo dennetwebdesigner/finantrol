@@ -13,10 +13,8 @@
       <h1 class="text-center text-slate-50 m-auto text-2xl mt-4 font-semibold">
         Serviços Realizados
       </h1>
-      <font-awesome-icon
-        icon="circle-plus"
-        class="text-4xl mr-2 absolute left-2 top-[73%]"
-        @click="
+      <Menu
+        v-on:add-service="
           () => {
             modalAddService = 'flex';
           }
@@ -37,19 +35,21 @@
 </template>
 <script lang="ts" setup>
 import { onMounted, ref } from "vue";
-import tokenContainer from "@/components/tokenContainer.vue";
 import { iToken } from "../interfaces/TokensService";
 import { tokenGetServices } from "../services/tokens/tokenGetService";
-import AddService from "@/components/AddService.vue";
-import SignIn from "@/components/SignIn.vue";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../config/firabase";
 
+import tokenContainer from "@/components/tokenContainer.vue";
+import SignIn from "@/components/SignIn.vue";
+import AddService from "@/components/AddService.vue";
+import Menu from "@/components/Menu.vue";
 const hasLogin = ref<boolean>(false);
 const tokens = ref<iToken[]>([]);
 const tokensSearch = ref<iToken[]>([]);
 const modalAddService = ref<string>("hidden");
 let timerSearch: any = null;
+
 const searchService = (e: any) => {
   clearTimeout(timerSearch);
   timerSearch = setTimeout(async () => {

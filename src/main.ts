@@ -8,9 +8,10 @@ import {
   faPhone,
   faCirclePlus,
   faCircleXmark,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faPhone, faCirclePlus, faCircleXmark);
+library.add(faPhone, faCirclePlus, faCircleXmark, faBars);
 
 const app = createApp(App);
 app.use(routes);
