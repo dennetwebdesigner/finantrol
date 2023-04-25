@@ -5,4 +5,5 @@ export type iToken = {
   contact_type: string;
   contact: string;
   type: string;
+  cash: string;
 };

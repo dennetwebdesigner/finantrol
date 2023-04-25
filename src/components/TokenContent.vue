@@ -7,7 +7,7 @@
   </p>
   <p class="w-6/12">{{ token.contact_type }}: {{ token.contact }}</p>
   <p class="w-6/12">
-    Pagamento em
+    {{ token.cash }} -
     <span class="font-bold text-lg text-purple-500 text-right">
       {{ token.type }}
     </span>

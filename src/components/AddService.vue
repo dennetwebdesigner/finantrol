@@ -51,6 +51,12 @@
         name="how"
         class="w-full h-16 shadow-lg mb-4 p-2 text-xl"
       />
+      <input
+        type="text"
+        placeholder="Valor do Serviço"
+        name="cash"
+        class="w-full h-16 shadow-lg mb-4 p-2 text-xl"
+      />
       <button
         type="submit"
         class="w-3/6 absolute right-3 bottom-[-60px] bg-orange-400 h-12 rounded-md text-white text-2xl"
@@ -80,6 +86,7 @@ const handleSubmit = async (e: any) => {
   const type = e.target.elements.type;
   const how = e.target.elements.how;
   const date = e.target.elements.date;
+  const cash = e.target.elements.cash;
 
   if (
     client.value.length < 1 ||
@@ -87,6 +94,7 @@ const handleSubmit = async (e: any) => {
     contact.value.length < 1 ||
     type.value.length < 1 ||
     how.value.length < 1 ||
+    cash.value.length < 1 ||
     date.value.length < 1
   ) {
     alert("campos precisam ser preenchidos!");
@@ -101,6 +109,7 @@ const handleSubmit = async (e: any) => {
       type: type.value,
       how: how.value,
       created_at: date.value,
+      cash: cash.value,
     });
     alert("Criado com sucesso!");
     console.log("Document written with ID: ", docRef.id);
